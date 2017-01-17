@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
@@ -7,7 +6,6 @@ from keras.layers import Input, Dense, Lambda
 from keras.models import Model
 from keras import backend as K
 from keras import objectives
-from keras.datasets import mnist
 from sklearn.cross_validation import train_test_split
 
 from multi_view_faces import load_data
@@ -73,7 +71,7 @@ vae.fit(x_train, x_train,
 encoder = Model(x, z_mean)
 
 
-# build a digit generator that can sample from the learned distribution
+# sample from the learned distribution
 decoder_input = Input(shape=(latent_dim,))
 _h_decoded = decoder_h(decoder_input)
 _x_decoded_mean = decoder_mean(_h_decoded)
